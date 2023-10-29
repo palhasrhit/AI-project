@@ -1,11 +1,9 @@
 from urllib import response
 import openai
 openai.api_key="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"
-
 def get_response(prompt:str) -> str|None:
     text:str | None=None
     # Create a chat completion request
-    
     try:
         response: dict = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
@@ -15,9 +13,8 @@ def get_response(prompt:str) -> str|None:
             frequency_penalty=0,
             presence_penalty=0.6,
             stop=["Human:","AI:"]
-        )
-        
-        choices: dict = response.grt('choices')[0]
+)
+        choices: dict = response.get('choices')[0]
         text = choices.get('text')
         
         
@@ -43,12 +40,12 @@ def update_list(message:str, pl:list[str]):
         
         
         if bot_response:
-           update_list(bot_response,pl)
-           pos: int = bot_response.find('\nnAI: ')
-           bot_response=bot_response [ pos +5:]
+            update_list(bot_response,pl)
+            pos: int = bot_response.find('\nAI: ')
+            bot_response=bot_response[pos+5:]
            
         else :
-           bot_response = 'somthhing went wrong...'
+            bot_response = 'somthhing went wrong...'
         
         return bot_response   
            
@@ -61,10 +58,8 @@ def update_list(message:str, pl:list[str]):
         while True:
             user_input: str = input('you: ')
             response: str = get_bot_response(user_input,prompt_list)
-            print(prompt_list)
+            print(f'Bot:{response}')
             
             
-         
-if __name__== '__main__':
-    main()
-
+    if __name__=='__main__':
+        main()
