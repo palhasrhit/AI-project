@@ -6,7 +6,7 @@ def get_response(prompt:str) -> str|None:
     # Create a chat completion request
     try:
         response: dict = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="text-davinci-003",
             temperature=1,
             max_tokens=150,
             top_p=1,
