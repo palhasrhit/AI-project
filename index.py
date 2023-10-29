@@ -1,6 +1,0 @@
-print("lets start with project")
-print("did u get it")
-print("iget it")
-print("nice")
-print("check")
-print("now its working well and good")
