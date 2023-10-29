@@ -61,5 +61,5 @@ def update_list(message:str, pl:list[str]):
             print(f'Bot:{response}')
             
             
-if __name__=='__main__':
-    main()
+    if __name__=='__main__':
+        main()
