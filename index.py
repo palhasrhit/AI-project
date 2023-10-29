@@ -1,9 +1,11 @@
 from urllib import response
 import openai
 openai.api_key="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"
+
 def get_response(prompt:str) -> str|None:
     text:str | None=None
     # Create a chat completion request
+    
     try:
         response: dict = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
@@ -13,9 +15,10 @@ def get_response(prompt:str) -> str|None:
             frequency_penalty=0,
             presence_penalty=0.6,
             stop=["Human:","AI:"]
-)
+        )
+        
         choices: dict = response.grt('choices')[0]
-        text choices.get('text')
+        text = choices.get('text')
         
         
     except Exception as e:
@@ -39,12 +42,12 @@ def update_list(message:str, pl:list[str]):
         bot_response: str = get_response(prompt)
         
         
-       if bot_response:
+        if bot_response:
            update_list(bot_response,pl)
            pos: int = bot_response.find('\nnAI: ')
-           bot_response=bot_response[pos =+5:]
+           bot_response=bot_response [ pos +5:]
            
-       else :
+        else :
            bot_response = 'somthhing went wrong...'
         
         return bot_response   
@@ -62,9 +65,6 @@ def update_list(message:str, pl:list[str]):
             
             
          
-        
-        
-
-if __name__ = '__main__':
+if __name__== '__main__':
     main()
 
