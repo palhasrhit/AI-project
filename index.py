@@ -14,8 +14,8 @@ def get_response(prompt:str) -> str|None:
             presence_penalty=0.6,
             stop=["Human:","AI:"]
 )
-        choices: dict = response.grt('choices')[0]
-        text choices.get('text')
+        choices: dict = response.get('choices')[0]
+        text = choices.get('text')
         
         
     except Exception as e:
@@ -39,13 +39,13 @@ def update_list(message:str, pl:list[str]):
         bot_response: str = get_response(prompt)
         
         
-       if bot_response:
-           update_list(bot_response,pl)
-           pos: int = bot_response.find('\nnAI: ')
-           bot_response=bot_response[pos =+5:]
+        if bot_response:
+            update_list(bot_response,pl)
+            pos: int = bot_response.find('\nAI: ')
+            bot_response=bot_response[pos+5:]
            
-       else :
-           bot_response = 'somthhing went wrong...'
+        else :
+            bot_response = 'somthhing went wrong...'
         
         return bot_response   
            
@@ -58,13 +58,8 @@ def update_list(message:str, pl:list[str]):
         while True:
             user_input: str = input('you: ')
             response: str = get_bot_response(user_input,prompt_list)
-            print(prompt_list)
+            print(f'Bot:{response}')
             
             
-         
-        
-        
-
-if __name__ = '__main__':
+if __name__=='__main__':
     main()
-
